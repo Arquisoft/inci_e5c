@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments/head" />
+<body>
+	<nav th:replace="fragments/nav" />
+	
+	
+<script>
+	console.log("principio de script");
+	var eventSource = new EventSource("/getEmitter");
+	eventSource.onmessage = function(event) {
+		console.log("entra de vdd");
+		console.log(event.data);
+		var inciJSON = JSON.parse(event.data);
+		var row = document.getElementById("cuerpoTabla").insertRow(0);	
+		row.insertCell(0).innerHTML = inciJSON.name;
+		row.insertCell(1).innerHTML = inciJSON.description;
+		row.insertCell(2).innerHTML = inciJSON.date;
+		row.insertCell(3).innerHTML = inciJSON.status;
+};
+	</script>
+		
+	<div class="container">
+		<div class="table-responsive">
+			<table class="table table-hover">
+			<p>Aquí se muestran todas las incidencias registradas en el sistema</p>
+				</span>
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Descripción</th>
+						<th>Fecha</th>
+						<th>Estado</th>
+					</tr>
+				</thead>
+				<tbody id="cuerpoTabla">
+					<tr th:each="incidencia : ${incidencias}">
+						<td th:text="${incidencia.name}" ></td>
+						<td th:text="${incidencia.description}"></td>
+						<td th:text="${incidencia.date}"></td>
+						<td th:text="${incidencia.status}" ></td>	
+					</tr>
+				</tbody>
+			</table>
+		</div>		
+	</div>
+	<footer th:replace="fragments/footer" />
+</body>
+</html>
