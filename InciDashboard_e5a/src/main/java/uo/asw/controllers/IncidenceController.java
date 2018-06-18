@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter.SseEventBuilder;
 
@@ -54,12 +55,22 @@ public class IncidenceController {
 		return emitter;
 	}
 
-	@GetMapping(value = "/incidencias/list")
+	@GetMapping(value = "/incidencias")
 	public String listarIncidencias(Model model, Principal principal) {
 		List<Incidence> incidencias;
 		incidencias = incidenceService.findAll();
 		model.addAttribute("incidencias", incidencias);
 		return "list";
+	}
+	
+	@RequestMapping(value = "/incidencias/{id}", method = RequestMethod.GET)
+	public String cambiarEstadoGet() {
+		return "cambiarEstado";
+	}
+	
+	@RequestMapping(value = "/incidencias/{id}", method = RequestMethod.POST)
+	public String cambiarEstado() {
+		return "redirect:/incidencias";
 	}
 
 
