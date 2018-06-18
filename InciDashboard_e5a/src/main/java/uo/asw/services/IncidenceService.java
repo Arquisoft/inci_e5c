@@ -2,6 +2,7 @@ package uo.asw.services;
 
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +17,13 @@ public class IncidenceService {
 	
 	public List<Incidence> findAll() {
 		return incidenceRepository.findAll();
+	}
+	
+	public Incidence findOne(ObjectId id) {
+		return incidenceRepository.findOne(id);
+	}
+	
+	public void update(Incidence incidence) {
+		incidenceRepository.save(incidence);
 	}
 }

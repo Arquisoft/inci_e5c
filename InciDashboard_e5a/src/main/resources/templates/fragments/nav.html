@@ -11,10 +11,16 @@
 					href="/login">Iniciar sesion <span
 						class="glyphicon glyphicon-log-in"></span>
 				</a></li>
-				<li><a href="/incidencias/list"
+				<li><a href="/incidencias"
 					sec:authorize="isAuthenticated()">Mostrar incidencias</a></li>
+				<li><a href="/mapa"
+					sec:authorize="isAuthenticated()">Mapa incidencias</a></li>
+				<li><a href="/incidencias/asignadas"
+					sec:authorize="isAuthenticated()">Incidencias asignadas</a></li>
+				<li><a href="/notificaciones"
+					sec:authorize="isAuthenticated()">Notificaciones</a></li>
 				<li sec:authorize="isAuthenticated()"><a href="/logout"
-					th:text="Cerrar sesiÛn"> <span
+					>Cerrar sesi√≥n <span
 						class="glyphicon glyphicon-log-out"></span>
 				</a></li>
 

@@ -15,12 +15,15 @@ protected void configure(HttpSecurity http) throws Exception {
     	.csrf().disable()
 		.authorizeRequests()
 		     .antMatchers("/css/**", "/img/**", "/script/**", "/", "/login/**", "/logout").permitAll()
+		    /* .antMatchers("/incidencias").authenticated()
+		     .antMatchers("/incidencias/**").authenticated()
+		     .antMatchers("/mapa").authenticated()*/
 		     .antMatchers("/").permitAll()
 		        .and()
         .formLogin()
              .loginPage("/login")
              .permitAll()
-             .defaultSuccessUrl("/home")
+             .defaultSuccessUrl("/")
              .and()
         .logout()
            .permitAll();

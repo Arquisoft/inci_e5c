@@ -16,7 +16,7 @@
 		row.insertCell(0).innerHTML = inciJSON.name;
 		row.insertCell(1).innerHTML = inciJSON.description;
 		row.insertCell(2).innerHTML = inciJSON.date;
-		row.insertCell(3).innerHTML = inciJSON.status;
+		row.insertCell(3).innerHTML = "<a href=\"/incidencias/cambiar-estado/" + inciJSON._id.toString() + "\"/>" + inciJSON.status + "</a>"
 };
 	</script>
 		
@@ -38,7 +38,7 @@
 						<td th:text="${incidencia.name}" ></td>
 						<td th:text="${incidencia.description}"></td>
 						<td th:text="${incidencia.date}"></td>
-						<td th:text="${incidencia.status}" ></td>	
+						<td><a th:href="${'/incidencias/cambiar-estado/' + incidencia._id}" th:text="${incidencia.status}"></a></td>
 					</tr>
 				</tbody>
 			</table>
