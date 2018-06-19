@@ -61,10 +61,7 @@ public class IncidenceController {
 
 	@GetMapping(value = "/incidencias")
 	public String listarIncidencias(Model model, Principal principal) {
-		List<Incidence> incidencias;
-		incidencias = incidenceService.findAll();
-		incidencias.forEach(x -> System.out.println(x.getName()));
-		model.addAttribute("incidencias", incidencias);
+		model.addAttribute("incidencias", incidenceService.findAll());
 		return "list";
 	}
 	
@@ -85,5 +82,13 @@ public class IncidenceController {
 	}
 
 
+	@RequestMapping(value = "/incidencias/mapa", method = RequestMethod.GET) 
+	public String mapaIncidencias(Model model) {
+		List<Incidence> validIncidences = new ArrayList<>();
+		incidenceService.findAll().stream() .filter(x -> x.getLatitud() != null && x.getLongitud() != null)
+		.forEach(x -> validIncidences.add(x));
+		model.addAttribute("incidencias", validIncidences);
+		return "mapa";
+	}
 	
 }

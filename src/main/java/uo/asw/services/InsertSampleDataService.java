@@ -3,16 +3,14 @@ package uo.asw.services;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import uo.asw.entities.Operario;
 import uo.asw.repositories.IncidenceRepository;
 import uo.asw.repositories.OperariosRepository;
 
-@Service
 public class InsertSampleDataService {
 
-	@Autowired 
+	/*@Autowired 
 	private OperariosRepository operariosRepository;
 	
 	@Autowired 
@@ -31,5 +29,5 @@ public class InsertSampleDataService {
 		operariosRepository.save(operario2);
 		operariosRepository.save(operario3);
 		operariosRepository.save(operario4);
-	}
+	}*/
 }

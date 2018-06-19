@@ -19,8 +19,7 @@ public class KafkaConsumer {
 
 	@KafkaListener(topics = "gygw6fys-Incidencias")
 	public void listen(String data) {
-		System.out.println(data);
-		System.out.println("RECIBIDO");
+		System.out.println("Recibido mensaje: " + data);
 		for (SseEmitter emitter : controller.getEmitters()) {
 		    try {
 			emitter.send(data, MediaType.APPLICATION_JSON);

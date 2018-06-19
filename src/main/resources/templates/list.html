@@ -38,7 +38,7 @@
 						<td th:text="${incidencia.name}" ></td>
 						<td th:text="${incidencia.description}"></td>
 						<td th:text="${incidencia.date}"></td>
-						<td><a th:href="${'/incidencias/cambiar-estado/' + incidencia._id}" th:text="${incidencia.status}"></a></td>
+						<td><a th:href="${'/incidencias/cambiar-estado/' + incidencia._id.toString()}" th:text="${incidencia.status}"></a></td>
 					</tr>
 				</tbody>
 			</table>
