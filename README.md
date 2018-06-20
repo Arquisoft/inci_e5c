@@ -15,7 +15,6 @@ Guillermo Diaz Perez (UO251387)
 
 Jesús Fdez Velasco (UO250914)
 
-
 Como ejecutar:
 
  1-Descargar Apache Kafka https://www.apache.org/dyn/closer.cgi?path=/kafka/1.0.1/kafka_2.11-1.0.1.tgz
