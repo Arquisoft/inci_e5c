@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter.SseEvent
 import uo.asw.entities.Incidence;
 import uo.asw.entities.IncidenceStatus;
 import uo.asw.services.IncidenceService;
+import uo.asw.services.NotificationService;
 
 @Controller
 public class IncidenceController {
@@ -28,6 +29,9 @@ public class IncidenceController {
 	@Autowired
 	private IncidenceService incidenceService;
 
+	@Autowired
+	private NotificationService notificationService;
+	
 	private final List<SseEmitter> emitters = Collections.synchronizedList(new ArrayList<>());
 
 	public void sendData(SseEventBuilder event) {
@@ -90,5 +94,10 @@ public class IncidenceController {
 		model.addAttribute("incidencias", validIncidences);
 		return "mapa";
 	}
+	@RequestMapping(value = "/notificaciones", method = RequestMethod.GET)
+	public String listarNotificaciones(Model model, Principal principal) {
+	model.addAttribute("notificaciones", notificationService.findAll());
+	return "listNotifications";
+}
 	
 }
