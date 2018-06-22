@@ -24,6 +24,8 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
 	    Operario o = operariosRepository.findByUsername(username);
 	    Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+	    
+	    if (o == null) throw new UsernameNotFoundException("usuario no encontrado");
 	  
 	    return  new org.springframework.security.core.userdetails.User(
 	            o.getUsername(), o.getPassword(), grantedAuthorities);

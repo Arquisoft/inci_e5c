@@ -68,6 +68,13 @@ public class IncidenceController {
 		model.addAttribute("incidencias", incidenceService.findAll());
 		return "list";
 	}
+
+	@GetMapping(value = "/incidencias/asignadas")
+	public String listarIncidenciasAsignadas(Model model, Principal principal) {
+		String usuario = principal.getName();
+		model.addAttribute("incidencias", incidenceService.findByOperador(usuario));
+		return "list";
+	}
 	
 	@RequestMapping(value = "/incidencias/cambiar-estado/{id}", method = RequestMethod.GET)
 	public String cambiarEstadoGet(Model model, @PathVariable String id) {
@@ -96,7 +103,7 @@ public class IncidenceController {
 	}
 	@RequestMapping(value = "/notificaciones", method = RequestMethod.GET)
 	public String listarNotificaciones(Model model, Principal principal) {
-	model.addAttribute("notificaciones", notificationService.findAll());
+	model.addAttribute("notificaciones", notificationService.findByOperador(principal.getName()));
 	return "listNotifications";
 }
 	

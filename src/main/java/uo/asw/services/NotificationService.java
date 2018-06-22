@@ -2,19 +2,29 @@ package uo.asw.services;
 
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import uo.asw.entities.Incidence;
 import uo.asw.entities.Notification;
+import uo.asw.entities.Operario;
 import uo.asw.entities.TipoIncidencia;
+import uo.asw.repositories.IncidenceRepository;
 import uo.asw.repositories.NotificationRepository;
+import uo.asw.repositories.OperariosRepository;
 
 @Service
 public class NotificationService {
 
+	@Autowired
+	private IncidenceRepository incidenceRepository;
 	
 	@Autowired
 	private NotificationRepository notificationRepository;
+
+	@Autowired
+	private OperariosRepository operariosRepository;
 	
 	
 	public List<Notification> findAll() {
@@ -22,20 +32,23 @@ public class NotificationService {
 	}
 	
 	
-	 public void clasify(TipoIncidencia type, Double valor, String name) {
+	 public void clasify(String strIdIncidencia, TipoIncidencia type, Double valor, String name) {
 			
+		 ObjectId idIncidence = new ObjectId(strIdIncidencia);
+		 Incidence incidence = incidenceRepository.findOne(idIncidence);
+		 
 		 if(temperatura(type,valor)){
-		 Notification n = new Notification(type,valor,name);
+		 Notification n = new Notification(type,valor,name, incidence.getOperario());
 		 notificationRepository.save(n);
 		
 		 }if(indundacion(type, valor)){
 		
-		 Notification n = new Notification(type,valor,name);
+		 Notification n = new Notification(type,valor,name, incidence.getOperario());
 		 notificationRepository.save(n);
 		
 		 }if(seismo(type, valor)){
 		
-		 Notification n = new Notification(type,valor,name);
+		 Notification n = new Notification(type,valor,name, incidence.getOperario());
 		 notificationRepository.save(n);
 		
 		 }
@@ -70,5 +83,13 @@ public class NotificationService {
 
 			return false;
 
+		}
+
+
+		public List<Notification> findByOperador(String operador) {
+			
+			Operario operario = operariosRepository.findByUsername(operador);
+			
+			return notificationRepository.findByOperador(operario.get_id());
 		}
 }

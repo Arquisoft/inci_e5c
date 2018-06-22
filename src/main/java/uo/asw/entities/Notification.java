@@ -11,18 +11,19 @@ public class Notification {
 	private TipoIncidencia type;
 	private double valor;
 	private String name;
-	
+	private ObjectId operador;
 
 	public Notification() {
 		
 	}
 	
 
-	public Notification(TipoIncidencia type, double valor, String name) {
+	public Notification(TipoIncidencia type, double valor, String name, ObjectId operador) {
 		super();
 		this.type = type;
 		this.valor = valor;
 		this.name= name;
+		this.operador = operador;
 	}
 
 
@@ -52,6 +53,10 @@ public class Notification {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public ObjectId getOperador() {
+		return operador;
 	}
 
 

@@ -35,6 +35,8 @@ public class Incidence {
 
 	private Double valor;
 	private Double latitud, longitud;
+	
+	private ObjectId operario;
 
 	public Incidence(String name, String description, Agent agent, List<String> tags, TipoIncidencia type,
 			Double valor) {
@@ -144,6 +146,14 @@ public class Incidence {
 
 	public void setLongitud(Double longitud) {
 		this.longitud = longitud;
+	}
+	
+	public ObjectId getOperario() {
+		return operario;
+	}
+	
+	public void setOperario(ObjectId operario) {
+		this.operario = operario;
 	}
 
 }
