@@ -17,13 +17,13 @@ Característica: Listar sus incidencias asignadas por parte de un operario
 			Y operario 'guille@uniovi.es'
 			
 		Dado otra incidencia recodiga en el sistema con nombre 'Inundacion Barcelona'
-			Y descripcion 'Gran Inundacion en Barcelona'
-			Y etiquetas 'barcelona,inundacion'
-			Y tipo 'SENSOR_INUNDACION'
-			Y valor 8.4
-			Y latitud 41.3818
-			Y longitud 2.1685
-			Y operario 'miguel@uniovi.es'
+			Y otra descripcion 'Gran Inundacion en Barcelona'
+			Y otras etiquetas 'barcelona,inundacion'
+			Y otro tipo 'SENSOR_INUNDACION'
+			Y otro valor 8.4
+			Y otra latitud 41.3818
+			Y otra longitud 2.1685
+			Y otro operario 'miguel@uniovi.es'
 
 		Cuando introducimos las incidencias en el sistema
 			Y iniciamos sesión

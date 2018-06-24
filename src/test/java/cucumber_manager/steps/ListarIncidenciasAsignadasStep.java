@@ -108,14 +108,14 @@ public class ListarIncidenciasAsignadasStep {
 	    	System.out.println("El nombre de la 2 incidencia es: " + nombreIncidencia);
 	    }
 
-	    @Y("^descripcion \'([^\"]*)\'$")
+	    @Y("^otra descripcion \'([^\"]*)\'$")
 	    public void descripcion_de_la_incidencia2(String descripcionIncidencia) throws Throwable 
 	    {
 	    	this.descripcion2 = descripcionIncidencia;
 	    	System.out.println("La descripcion de la incidencia es: " + descripcionIncidencia);
 	    }
 
-	    @Y("^etiquetas \'([^\"]*)\'$")
+	    @Y("^otras etiquetas \'([^\"]*)\'$")
 	    public void etiquetas_de_la_incidencia2(ArrayList<String> etiquetas) throws Throwable 
 	    {
 	    	this.etiquetas2 = etiquetas;
@@ -127,25 +127,25 @@ public class ListarIncidenciasAsignadasStep {
 	    	
 	    }
 	    
-	    @Y("^tipo \'([^\"]*)\'$")
+	    @Y("^otro tipo \'([^\"]*)\'$")
 	    public void tipo_de_la_incidencia2(String tipo) {
 	    	this.tipo2 = Incidence.parseTipo(tipo);
 	    	System.out.println("El tipo de la incidencia 2 es " + tipo);
 	    }
 	    
-	    @Y("^valor (.+)$")
+	    @Y("^otro valor (.+)$")
 	    public void valor_de_la_incidencia2(double valor) {
 	    	this.valor2 = valor;
 	    	System.out.println("El valor de la incidencia 2 es " + valor);
 	    }
 	    
-	    @Y("^latitud (.+)$")
+	    @Y("^otra latitud (.+)$")
 	    public void latitud_de_la_incidencia2(double lat) {
 	    	this.lat2 = lat;
 	    	System.out.println("La latitud de la incidencia 2 es " + lat);
 	    }
 	    
-	    @Y("^longitud (.+)$")
+	    @Y("^otra longitud (.+)$")
 	    public void longitud_de_la_incidencia2(double longitud) {
 	    	this.lon2 = longitud;
 	    	System.out.println("El valor de la incidencia 2 es " + longitud);

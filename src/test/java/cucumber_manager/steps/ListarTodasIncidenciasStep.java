@@ -37,35 +37,35 @@ public class ListarTodasIncidenciasStep {
     Incidence i1, i2;
     List<Incidence> incidencias;
 
-    @Dado("^el email del operario que va a enviar la incidencia \'([^\"]*)\'$")
+    @Dado("^el operario que va a listar las incidencias \'([^\"]*)\'$")
     public void email(String user) 
     {
     	this.user = user;
     	System.out.println("El usuario del operario es " + user);
     }
 
-    @Y("^su password \'([^\"]*)\'$")
+    @Y("^su password correcta \'([^\"]*)\'$")
     public void password(String password) 
     {
     	this.password = password;
     }
     
 
-    @Dado("^una incidencia recogida en el sistema con nombre \'([^\"]*)\'$")
+    @Dado("^una incidencia que ha sido recogida en el sistema con nombre \'([^\"]*)\'$")
     public void una_incidencia_recogida_en_el_sistema_con_nombre1(String nombreIncidencia) throws Throwable 
     {
     	this.nombre1 = nombreIncidencia;
     	System.out.println("El nombre de la 1 incidencia es: " + nombreIncidencia);
     }
 
-    @Y("^descripcion \'([^\"]*)\'$")
+    @Y("^nueva descripcion de ella \'([^\"]*)\'$")
     public void descripcion_de_la_incidencia1(String descripcionIncidencia) throws Throwable 
     {
     	this.descripcion1 = descripcionIncidencia;
     	System.out.println("La descripcion de la incidencia es: " + descripcionIncidencia);
     }
 
-    @Y("^etiquetas \'([^\"]*)\'$")
+    @Y("^nuevas etiquetas de ella \'([^\"]*)\'$")
     public void etiquetas_de_la_incidencia1(ArrayList<String> etiquetas) throws Throwable 
     {
     	this.etiquetas1 = etiquetas;
@@ -77,45 +77,45 @@ public class ListarTodasIncidenciasStep {
     	
     }
     
-    @Y("^tipo \'([^\"]*)\'$")
+    @Y("^nuevo tipo de ella \'([^\"]*)\'$")
     public void tipo_de_la_incidencia1(String tipo) {
     	this.tipo1 = Incidence.parseTipo(tipo);
     	System.out.println("El tipo de la incidencia 1 es " + tipo);
     }
     
-    @Y("^valor (.+)$")
+    @Y("^nuevo valor de ella (.+)$")
     public void valor_de_la_incidencia1(double valor) {
     	this.valor1 = valor;
     	System.out.println("El valor de la incidencia 1 es " + valor);
     }
     
-    @Y("^latitud (.+)$")
+    @Y("^nueva latitud de ella (.+)$")
     public void latitud_de_la_incidencia1(double lat) {
     	this.lat1 = lat;
     	System.out.println("La latitud de la incidencia 1 es " + lat);
     }
     
-    @Y("^longitud (.+)$")
+    @Y("^nueva longitud de ella (.+)$")
     public void longitud_de_la_incidencia1(double longitud) {
     	this.lon1 = longitud;
     	System.out.println("El valor de la incidencia 1 es " + longitud);
     }
     
-    @Dado("^otra incidencia recogida en el sistema con nombre \'([^\"]*)\'$")
+    @Dado("^otra incidencia que ha sido recogida en el sistema con nombre \'([^\"]*)\'$")
     public void otra_incidencia_recogida_en_el_sistema_con_nombre2(String nombreIncidencia) throws Throwable 
     {
     	this.nombre2 = nombreIncidencia;
     	System.out.println("El nombre de la 2 incidencia es: " + nombreIncidencia);
     }
 
-    @Y("^descripcion \'([^\"]*)\'$")
+    @Y("^otra nueva descripcion de ella \'([^\"]*)\'$")
     public void descripcion_de_la_incidencia2(String descripcionIncidencia) throws Throwable 
     {
     	this.descripcion2 = descripcionIncidencia;
     	System.out.println("La descripcion de la incidencia es: " + descripcionIncidencia);
     }
 
-    @Y("^etiquetas \'([^\"]*)\'$")
+    @Y("^otras nuevas etiquetas de ella \'([^\"]*)\'$")
     public void etiquetas_de_la_incidencia2(ArrayList<String> etiquetas) throws Throwable 
     {
     	this.etiquetas2 = etiquetas;
@@ -127,31 +127,31 @@ public class ListarTodasIncidenciasStep {
     	
     }
     
-    @Y("^tipo \'([^\"]*)\'$")
+    @Y("^otro nuevo tipo de ella \'([^\"]*)\'$")
     public void tipo_de_la_incidencia2(String tipo) {
     	this.tipo2 = Incidence.parseTipo(tipo);
     	System.out.println("El tipo de la incidencia 2 es " + tipo);
     }
     
-    @Y("^valor (.+)$")
+    @Y("^otro nuevo valor de ella (.+)$")
     public void valor_de_la_incidencia2(double valor) {
     	this.valor2 = valor;
     	System.out.println("El valor de la incidencia 2 es " + valor);
     }
     
-    @Y("^latitud (.+)$")
+    @Y("^otra nueva latitud de ella (.+)$")
     public void latitud_de_la_incidencia2(double lat) {
     	this.lat2 = lat;
     	System.out.println("La latitud de la incidencia 2 es " + lat);
     }
     
-    @Y("^longitud (.+)$")
+    @Y("^otra nueva longitud de ella (.+)$")
     public void longitud_de_la_incidencia2(double longitud) {
     	this.lon2 = longitud;
     	System.out.println("El valor de la incidencia 2 es " + longitud);
     }
 
-    @Cuando("^introducimos las incidencias en el sistema$")
+    @Cuando("^introducimos las incidencias en el sistema nuevamente$")
     public void introducimos_las_incidencias_en_el_sistema() 
     {
 		Incidence i1 = new Incidence(), i2 = new Incidence();
@@ -175,19 +175,19 @@ public class ListarTodasIncidenciasStep {
 		incidenceRepository.save(i2);
     }
     
-    @Y("^iniciamos sesión$") 
+    @Y("^iniciamos sesión nuevamente$") 
     public void iniciamos_sesion() {
     	Operario operario = operariosRepository.findByUsername(user);
     	assertTrue(operario != null);
     	assertTrue(operario.getUsername().equals(user));
     }
     
-    @Y("^tratamos de listar todas las incidencias$")
+    @Y("^tratamos de listar todas las incidencias nuevamente$")
     public void tratamos_de_listar_todas_las_incidencias() {
     	this.incidencias = incidenceRepository.findAll();
     }
     
-    @Entonces("^se listan las incidencias correctamente $")
+    @Entonces("^se listan las incidencias correctamente nuevamente$")
     public void se_listan_las_incidencias_correctamente() 
     {
     	assertTrue(incidencias.contains(i1));
