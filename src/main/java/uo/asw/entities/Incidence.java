@@ -52,6 +52,44 @@ public class Incidence {
 		this.valor = valor;
 
 	}
+	
+	public Incidence() {}
+
+	public Agent getAgent() {
+		return agent;
+	}
+
+	public void setAgent(Agent agent) {
+		this.agent = agent;
+	}
+
+	public static List<IncidenceStatus> getEstados() {
+		return estados;
+	}
+
+	public static List<TipoIncidencia> getTipos() {
+		return tipos;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public void setTags(List<String> tags) {
+		this.tags = tags;
+	}
+
+	public void setProperties(Map<String, String> properties) {
+		this.properties = properties;
+	}
 
 	public ObjectId get_id() {
 		return _id;
@@ -154,6 +192,10 @@ public class Incidence {
 	
 	public void setOperario(ObjectId operario) {
 		this.operario = operario;
+	}
+	
+	public static TipoIncidencia parseTipo(String tipo) {
+		return tipos.stream().filter(x -> x.toString().equals(tipo)).findFirst().get();
 	}
 
 }
