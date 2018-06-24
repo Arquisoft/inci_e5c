@@ -37,7 +37,7 @@ public class ListarIncidenciasAsignadasStep {
 	    Incidence i1, i2;
 	    List<Incidence> incidencias;
 
-	    @Dado("^el email del operario que va a enviar la incidencia \'([^\"]*)\'$")
+	    @Dado("^el usuario del operario que va a listar las incidencias \'([^\"]*)\'$")
 	    public void email(String user) 
 	    {
 	    	this.user = user;
@@ -123,8 +123,7 @@ public class ListarIncidenciasAsignadasStep {
 	    	for (String string : etiquetas) 
 	    	{
 				System.out.println(string);
-			}
-	    	
+	    	}
 	    }
 	    
 	    @Y("^otro tipo \'([^\"]*)\'$")

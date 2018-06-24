@@ -22,6 +22,10 @@ public class IncidenceService {
 	@Autowired
 	private OperariosRepository operariosRepository;
 	
+	public void add(Incidence incidence) {
+		incidenceRepository.save(incidence);
+	}
+	
 	public List<Incidence> findAll() {
 		return incidenceRepository.findAll();
 	}
