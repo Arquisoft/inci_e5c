@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "notificaciones")
 public class Notification {
+	
 	@Id
 	private ObjectId _id;
 	private TipoIncidencia type;
@@ -44,9 +45,6 @@ public class Notification {
 	public void setType(TipoIncidencia type) {
 		this.type = type;
 	}
-	
-	
-	
 	
 	
 	public void setOperador(ObjectId operador) {

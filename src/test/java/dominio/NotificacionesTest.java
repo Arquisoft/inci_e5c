@@ -6,7 +6,6 @@ import static org.junit.Assert.assertNull;
 
 import java.util.Arrays;
 
-import org.bson.types.ObjectId;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

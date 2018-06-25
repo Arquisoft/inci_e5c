@@ -6,8 +6,14 @@
 	<nav th:replace = "fragments/nav"></nav>
 	<div class="container" style="text-align: center">
 		<h2>Bienvenido al InciDashboard_e5a </h2>
+		
 		<h2 sec:authorize="isAuthenticated()"> Usuario registrado como: <span sec:authentication="principal.username" th:inline="text">  </h2>
+		<img src="/img/notificacion.gif" border=0> 
+	
+	
 	</div>
+				
+	
 	<footer th:replace = "fragments/footer"></footer>
 </body>
 

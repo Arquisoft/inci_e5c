@@ -1,4 +1,4 @@
-# InciDashboard_e5a
+# Inci_e5c
 InciDashboard
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c77c11b6a34b46c4bc6b299e15976f2d)](https://www.codacy.com/app/jelabra/InciManager_e5a?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Arquisoft/inci_e5c&amp;utm_campaign=Badge_Grade)
@@ -7,7 +7,7 @@ InciDashboard
 
 AUTORES:
 
-Alvaro Manuel Camporrox Ayala (UO251562)
+Alvaro Manuel Camporro Ayala (UO251562)
 
 Miguel Villademoros García (UO251836)
 
@@ -27,11 +27,11 @@ Como ejecutar:
  
  5-Ejecutar desde eclipse la clase Application
 
- 6-Conectarse a http://localhost:8090/
+ 6-Conectarse a http://localhost:8091/
  
- 7-Introducir datos de usuario:
+ 7-Introducir datos de operario:
  
-   Usuarios
+   Operarios:
  
      Usuario: alvaro@uniovi.es Contraseña: Contra 
  
@@ -41,7 +41,14 @@ Como ejecutar:
  
      Usuario: jesus@uniovi.es Contraseña: Contra
  
- 8-Rellenar los datos de la incidencia
- 
- 9-Enviar los datos de la incidencia
+
+ 8-Opciones
+
+   -Listar todas las incidencias
+   
+   -Listas incidencias asignadas
+   
+   -Listar notificaciones
+   
+   -Mapa de incidencias
   

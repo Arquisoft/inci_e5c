@@ -27,7 +27,6 @@ public class Incidence {
 
 	private Map<String, String> properties;
 
-	// Implementacion de notificaciones valores peligrosos
 
 	private TipoIncidencia type;
 
