@@ -7,6 +7,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({
 	dominio.OperarioTest.class,
 	dominio.IncidenciaTest.class,
+	dominio.NotificacionesTest.class,
 	cucumber_manager.CucumberTest.class
 })
 public class AllTests 

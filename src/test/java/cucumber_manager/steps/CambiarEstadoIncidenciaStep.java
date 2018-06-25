@@ -19,6 +19,7 @@ import uo.asw.DashboardApplication;
 import uo.asw.entities.Incidence;
 import uo.asw.entities.IncidenceStatus;
 import uo.asw.entities.TipoIncidencia;
+import uo.asw.repositories.IncidenceRepository;
 import uo.asw.services.IncidenceService;
 
 @ContextConfiguration(classes = DashboardApplication.class, loader = SpringBootContextLoader.class)
@@ -28,6 +29,9 @@ public class CambiarEstadoIncidenciaStep {
 	
 	@Autowired 
 	private IncidenceService incidenceService;
+	
+	@Autowired 
+	private IncidenceRepository incidenceRepository;
 
 	private String nombre, descripcion;
 	private List<String> tags;
@@ -104,5 +108,6 @@ public class CambiarEstadoIncidenciaStep {
 	public void el_estado_se_cambia_correctamente() {
 		Incidence i = incidenceService.findOne(incidencia.get_id());
 		assertTrue(i.getStatus().equals(newStatus));
+		incidenceRepository.delete(incidencia);
 	}
 }

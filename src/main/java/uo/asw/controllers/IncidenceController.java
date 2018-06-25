@@ -10,6 +10,7 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,13 +51,14 @@ public class IncidenceController {
 		return emitters;
 	}
 
+	@CrossOrigin(origins = "http://localhost:8091")
 	@RequestMapping("/getEmitter")
 	public SseEmitter getEmitter() {
 		return nuevoEmitter();
 	}
 
 	public SseEmitter nuevoEmitter() {
-		SseEmitter emitter = new SseEmitter();
+		SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);
 		emitter.onTimeout(() -> emitters.remove(emitter));
 		emitter.onCompletion(() -> emitters.remove(emitter));
 		emitters.add(emitter);
@@ -65,7 +67,9 @@ public class IncidenceController {
 
 	@GetMapping(value = "/incidencias")
 	public String listarIncidencias(Model model, Principal principal) {
-		model.addAttribute("incidencias", incidenceService.findAll());
+		List<Incidence> incidencias = incidenceService.findAll();
+		Collections.reverse(incidencias);
+		model.addAttribute("incidencias", incidencias);
 		return "list";
 	}
 

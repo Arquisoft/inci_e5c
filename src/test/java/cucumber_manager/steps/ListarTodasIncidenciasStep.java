@@ -181,6 +181,7 @@ public class ListarTodasIncidenciasStep {
 		this.i2 = i2;
 		incidenceRepository.save(i1);
 		incidenceRepository.save(i2);
+		System.err.println(i1);
     }
     
     @Y("^iniciamos sesión nuevamente$") 
@@ -198,9 +199,10 @@ public class ListarTodasIncidenciasStep {
     @Entonces("^se listan las incidencias correctamente nuevamente$")
     public void se_listan_las_incidencias_correctamente() 
     {
-    	//ARREGLAR!!!
-    	//assertTrue(incidencias.contains(i1));
-    	//assertTrue(incidencias.contains(i2));
+    	assertTrue(incidencias.contains(i1));
+    	assertTrue(incidencias.contains(i2));
+     	incidenceRepository.delete(i1);
+    	incidenceRepository.delete(i2);
     	System.out.println("Se listan las incidencias correctamente");
     }
 

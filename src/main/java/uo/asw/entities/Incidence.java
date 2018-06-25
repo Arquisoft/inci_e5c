@@ -20,7 +20,7 @@ public class Incidence {
 
 	private String name, description,agent;
 
-	private Date date;
+	private Date date = new Date();
 	private IncidenceStatus status;
 
 	private List<String> tags;
@@ -41,10 +41,8 @@ public class Incidence {
 		this.name = name;
 		this.description = description;
 		this.tags = tags;
-		this.date = new Date();
 		this.status = IncidenceStatus.OPENED;
 		this.agent = agent;
-		this.date = new Date();
 		this.tags = tags;
 		this.type = type;
 		this.valor = valor;
@@ -198,6 +196,12 @@ public class Incidence {
 	
 	public static IncidenceStatus parseEstado(String estado) {
 		return estados.stream().filter(x -> x.toString().equals(estado)).findFirst().get();
+	}
+	
+	public boolean equals(Object o) {
+		if (!(o instanceof Incidence)) return false;
+		Incidence i = (Incidence) o;
+		return i.get_id().equals(_id);
 	}
 
 }

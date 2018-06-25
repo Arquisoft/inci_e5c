@@ -1,5 +1,6 @@
 package cucumber_manager.steps;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -191,14 +192,16 @@ public class ListarIncidenciasAsignadasStep {
 	    
 	    @Y("^tratamos de listar todas las incidencias$")
 	    public void tratamos_de_listar_todas_las_incidencias() {
-	    	this.incidencias = incidenceRepository.findAll();
+	    	this.incidencias = incidenceService.findByOperador(user);
 	    }
 	    
 	    @Entonces("^se listan las incidencias correctamente $")
 	    public void se_listan_las_incidencias_correctamente() 
 	    {
 	    	assertTrue(incidencias.contains(i1));
-	    	assertTrue(incidencias.contains(i2));
+	    	assertFalse(incidencias.contains(i2));
+	    	incidenceRepository.delete(i1);
+	    	incidenceRepository.delete(i2);
 	    	System.out.println("Se listan las incidencias correctamente");
 	    }
 	
