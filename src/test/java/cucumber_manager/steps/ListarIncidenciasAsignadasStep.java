@@ -6,11 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootContextLoader;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import cucumber.api.java.es.Y;
+import uo.asw.DashboardApplication;
 import uo.asw.entities.Incidence;
 import uo.asw.entities.Operario;
 import uo.asw.entities.TipoIncidencia;
@@ -18,6 +23,9 @@ import uo.asw.repositories.IncidenceRepository;
 import uo.asw.repositories.OperariosRepository;
 import uo.asw.services.IncidenceService;
 
+@ContextConfiguration(classes = DashboardApplication.class, loader = SpringBootContextLoader.class)
+@WebAppConfiguration
+@ActiveProfiles("INTEGRATION_TEST")
 public class ListarIncidenciasAsignadasStep {
 
 	 @Autowired

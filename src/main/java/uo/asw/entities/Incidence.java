@@ -18,9 +18,7 @@ public class Incidence {
 	@Id
 	private ObjectId _id;
 
-	private String name, description;
-
-	private Agent agent;
+	private String name, description,agent;
 
 	private Date date;
 	private IncidenceStatus status;
@@ -38,7 +36,7 @@ public class Incidence {
 	
 	private ObjectId operario;
 
-	public Incidence(String name, String description, Agent agent, List<String> tags, TipoIncidencia type,
+	public Incidence(String name, String description, String agent, List<String> tags, TipoIncidencia type,
 			Double valor) {
 		this.name = name;
 		this.description = description;
@@ -55,11 +53,11 @@ public class Incidence {
 	
 	public Incidence() {}
 
-	public Agent getAgent() {
+	public String getAgent() {
 		return agent;
 	}
 
-	public void setAgent(Agent agent) {
+	public void setAgent(String agent) {
 		this.agent = agent;
 	}
 
@@ -137,7 +135,7 @@ public class Incidence {
 				+ " \"description\" : \""+ description + "\", " 
 				+ " \"date\" : \"" + date + "\", " 
 				+ " \"status\" : \"" + status + "\", "
-				+ " \"agent\" : \"" + agent.getNombre() + "\", " 
+				+ " \"agent\" : \"" + agent + "\", " 
 				+ " \"tags\" : [" + tagsList() + "], "
 				+ " \"type\" : \"" + type + "\", " 
 				+ " \"valor\" : " + valor + ", "
@@ -154,7 +152,7 @@ public class Incidence {
 
 	@Override
 	public String toString() {
-		return "Incidence [id=" + _id + "#user=" + agent.getNombre() + "#indicenceName=" + name + "#description="
+		return "Incidence [id=" + _id + "#user=" + agent + "#indicenceName=" + name + "#description="
 				+ description + "#tags=<" + tags + "#indicetype=" + type + "#indiceValor=" + valor + ">]";
 	}
 
@@ -196,6 +194,10 @@ public class Incidence {
 	
 	public static TipoIncidencia parseTipo(String tipo) {
 		return tipos.stream().filter(x -> x.toString().equals(tipo)).findFirst().get();
+	}
+	
+	public static IncidenceStatus parseEstado(String estado) {
+		return estados.stream().filter(x -> x.toString().equals(estado)).findFirst().get();
 	}
 
 }

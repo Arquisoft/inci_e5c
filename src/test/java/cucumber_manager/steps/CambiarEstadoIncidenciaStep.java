@@ -6,16 +6,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootContextLoader;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import cucumber.api.java.es.Y;
+import uo.asw.DashboardApplication;
 import uo.asw.entities.Incidence;
 import uo.asw.entities.IncidenceStatus;
 import uo.asw.entities.TipoIncidencia;
 import uo.asw.services.IncidenceService;
 
+@ContextConfiguration(classes = DashboardApplication.class, loader = SpringBootContextLoader.class)
+@WebAppConfiguration
+@ActiveProfiles("INTEGRATION_TEST")
 public class CambiarEstadoIncidenciaStep {
 	
 	@Autowired 
@@ -26,6 +34,7 @@ public class CambiarEstadoIncidenciaStep {
 	private double valor,lon,lat;
 	private TipoIncidencia tipo;
 	private Incidence incidencia;
+	private IncidenceStatus newStatus;
 	
 	@Dado("^una incidencia con nombre \'([^\"]*)\'$")
 	public void una_incidencia_con_nombre(String nombreIncidencia) throws Throwable {
@@ -85,14 +94,15 @@ public class CambiarEstadoIncidenciaStep {
 		incidencia.setLongitud(lon);
 		incidenceService.add(incidencia);
 		assertTrue(incidencia.getStatus().equals(IncidenceStatus.OPENED));
-		System.out.println("Cambiamos su estado de 'OPENED' a 'IN_PROCESS'");
-		incidencia.setStatus(IncidenceStatus.IN_PROCESS);
+		System.out.println("Cambiamos su estado de 'OPENED' a '"  + nuevoEstado + "'");
+		this.newStatus = Incidence.parseEstado(nuevoEstado);
+		incidencia.setStatus(newStatus);
 		incidenceService.update(incidencia);
 	}
 	
 	@Entonces("^el estado se cambia correctamente$")
 	public void el_estado_se_cambia_correctamente() {
 		Incidence i = incidenceService.findOne(incidencia.get_id());
-		assertTrue(i.getStatus().equals(IncidenceStatus.IN_PROCESS));
+		assertTrue(i.getStatus().equals(newStatus));
 	}
 }
