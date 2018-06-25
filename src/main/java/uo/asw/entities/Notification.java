@@ -26,6 +26,17 @@ public class Notification {
 		this.operador = operador;
 	}
 
+	
+
+	public ObjectId get_id() {
+		return _id;
+	}
+
+
+	public void set_id(ObjectId _id) {
+		this._id = _id;
+	}
+
 
 	public TipoIncidencia getType() {
 		return type;
@@ -36,6 +47,13 @@ public class Notification {
 	
 	
 	
+	
+	
+	public void setOperador(ObjectId operador) {
+		this.operador = operador;
+	}
+
+
 	public double getValor() {
 		return valor;
 	}

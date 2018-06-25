@@ -11,5 +11,8 @@ import uo.asw.entities.Incidence;
 public interface IncidenceRepository extends MongoRepository<Incidence, ObjectId> {
 
 	List<Incidence> findByOperario(ObjectId get_id);
+	
+	Incidence findByName(String name);
+
 
 }
