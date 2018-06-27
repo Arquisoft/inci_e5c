@@ -17,17 +17,10 @@ Jesús Fdez Velasco (UO250914)
 
 Como ejecutar:
 
- 1-Descargar Apache Kafka https://www.apache.org/dyn/closer.cgi?path=/kafka/1.0.1/kafka_2.11-1.0.1.tgz
- 
- 2-Lanzar Zookeeper bin\windows\zookeeper-server-start.bat config\zookeeper.properties
- 
- 3-Lanzar Apache Kafka bin\windows\kafka-server-start.bat config\server.properties
- 
- 4-Descargar base de datos https://sourceforge.net/projects/hsqldb/files/ y arrancarla.
- 
- 5-Ejecutar desde eclipse la clase Application
+A la hora de ejecutar el proyecto podemos ejecutarlo usando Maven (si lo tenemos instalado) abriendo una ventana de comandos en la carpeta del proyecto y ejecutando mvn spring-boot:run
+Tambien se podría ejecutar a través de eclipse. Una vez arrancada la aplicación accedemos a localhost:8091 y vemos ya el formulario de login del dashboard. 
 
- 6-Conectarse a http://localhost:8091/
+Hay que tener en cuenta que en esta aplicación se usa MongoDB en la nube, con lo cual no es necesario arrancar ninguna base de datos en local.
  
  7-Introducir datos de operario:
  
